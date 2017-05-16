@@ -1,0 +1,33 @@
+<main class="col-8 offset-2" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row">
+            <div>
+                <a class="btn btn-outline-success" th:href="@{/parts/add}"><strong>+ </strong>Add part</a>
+            </div>
+            <table class="table table-hover">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>SupplierName</th>
+                    </tr>
+                </thead>
+                <tbody th:each="part : ${parts}" th:object="${part}">
+                    <th scope="row" th:text="*{name}">
+                        <td th:text="*{price}"></td>
+                        <td th:text="*{supplierName}"></td>
+                        <td>
+                            <a th:href="@{/parts/{id} (id=*{id})}">Details</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/parts/delete/{id} (id=*{id})}">Delete</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/parts/edit/{id} (id=*{id})}">Edit</a>
+                        </td>
+                    </th>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

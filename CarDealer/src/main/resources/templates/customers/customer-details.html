@@ -1,0 +1,9 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="card text-center">
+        <div th:object="${customer}">
+            <h4 class="card-header" th:text="*{name}"></h4>
+            <p class="card-text" th:text="|Bought cars: *{#sets.size(sales)}|"></p>
+            <p class="card-text" th:text="|Total spent money: *{#numbers.formatDecimal(totalSum,0,2)}|"></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="card text-center">
+        <div th:object="${sale}">
+            <h3 class="card-header" th:text="|Car make: *{carMake}|"></h3>
+            <p class="card-text" th:text="|Car model: *{carModel}|"></p>
+            <p class="card-text" th:text="|Customer name: *{customerName}|"></p>
+            <p class="card-text" th:text="|Discount: *{saleDiscount}|"></p>
+        </div>
+    </div>
+</div>

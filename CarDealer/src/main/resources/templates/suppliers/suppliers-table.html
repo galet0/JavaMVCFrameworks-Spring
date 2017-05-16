@@ -1,0 +1,24 @@
+<div class="container">
+    <form>
+        <input type="submit" name="filter" class="btn btn-link" value="All Suppliers"/>
+        <input type="submit" name="filter" class="btn btn-link" value="Local"/>
+        <input type="submit" name="filter" class="btn btn-link" value="Importer"/>
+    </form>
+
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number of parts</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supplier : ${suppliers}" th:object="${supplier}">
+            <th scope="row" th:text="*{id}"></th>
+            <td th:text="*{name}"></td>
+            <td th:text="*{#lists.size(parts)}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

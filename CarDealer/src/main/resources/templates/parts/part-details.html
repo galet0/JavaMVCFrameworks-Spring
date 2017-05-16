@@ -1,0 +1,10 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="card text-center">
+        <div th:object="${part}">
+            <h4 class="card-header" th:text="*{name}"></h4>
+            <p class="card-text" th:text="|Part price: *{price}|"></p>
+            <p class="card-text" th:text="|Part quantity: *{quantity}|"></p>
+            <p class="card-text" th:text="|Part supplier: *{supplierName}|"></p>
+        </div>
+    </div>
+</div>

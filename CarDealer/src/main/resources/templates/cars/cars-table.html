@@ -1,0 +1,37 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <a th:href="@{/cars/add}" class="btn btn-outline-success"><strong>+ </strong>Add Car</a>
+
+    <div class="row">
+        <form>
+            <div class="input-group">
+                <input type="text" class="form-control" name="make" placeholder="Enter the make..."/>
+                <span class="input-group-btn"></span>
+                <input type="submit" class="btn btn-primary" value="Find"/>
+            </div>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Travelled Distance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${cars}" th:object="${car}">
+            <th scope="row" th:text="*{make}">
+            <td th:text="*{model}"></td>
+            <td th:text="*{#numbers.formatDecimal(travelledDistance,0,2)}"></td>
+            <td>
+                <a th:href="@{/cars/{id}/parts (id=*{id})}">Details</a>
+            </td>
+            <td>
+                <a th:href="@{/cars/edit/{id} (id=*{id})}">Edit</a>
+            </td>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
