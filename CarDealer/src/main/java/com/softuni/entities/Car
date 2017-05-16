@@ -1,0 +1,86 @@
+package com.softuni.entities;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name = "cars")
+public class Car implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "make")
+    private String make;
+
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "travelled_distance")
+    private double travelledDistance;
+
+    @ManyToMany()
+    @JoinTable(name = "parts_cars",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "part_id",referencedColumnName = "id"))
+    private Set<Part> parts;
+
+    @OneToMany(mappedBy = "car", targetEntity = Sale.class)
+    private Set<Sale> sales;
+
+    public Car() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getTravelledDistance() {
+        return travelledDistance;
+    }
+
+    public void setTravelledDistance(double travelledDistance) {
+        this.travelledDistance = travelledDistance;
+    }
+
+    public Set<Part> getParts() {
+        return parts;
+    }
+
+    public void setParts(Set<Part> parts) {
+        this.parts = parts;
+    }
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
+    }
+}
