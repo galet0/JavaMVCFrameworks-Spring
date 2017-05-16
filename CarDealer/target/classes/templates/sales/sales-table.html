@@ -1,0 +1,20 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Car Make</th>
+                <th>Customer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="sale : ${sales}" th:object="${sale}">
+                <th scope="row" th:text="*{carMake}">
+                    <td th:text="*{customerName}"></td>
+                    <td>
+                        <a th:href="@{/sales/{id} (id=*{id})}">Details</a>
+                    </td>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
